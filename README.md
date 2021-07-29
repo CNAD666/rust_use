@@ -1,2 +1,2 @@
 # rust_use
-study rust
+我和底层之间，隔着一个runtime
