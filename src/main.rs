@@ -1,14 +1,18 @@
+#![feature(proc_macro_hygiene, decl_macro)]
+#[macro_use]
+extern crate rocket;
+
+
 mod api;
 mod data;
+mod demo;
 
 use api::web_api::{init_web};
+use demo::{test};
 
 fn main() {
-    let s1 = String::from("hello");
-    let s2 = s1.clone();
-
-    println!("{}, world!", s1);
+    test::test();
 
     //init web service
-    init_web().unwrap_or_else(|err| println!("{:?}", err));
+    init_web();
 }
