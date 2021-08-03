@@ -37,3 +37,12 @@ async fn manual_hello() -> impl Responder {
 }
 
 
+trait Animal {
+    fn run() -> &str;
+}
+
+impl Animal for Dog {
+    fn run() -> &str {
+        todo!()
+    }
+}
