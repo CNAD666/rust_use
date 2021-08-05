@@ -1,11 +1,14 @@
 pub fn test() {
     let p = Processor {
-        callback: simple_callback,
+        callback: |num| {
+            println!("------------------------");
+            println!("{}", num);
+        },
     };
-    p.process_events(); // hello world!
+    p.process_events(12222); // hello world!
 }
 
-type Callback = fn();
+type Callback = fn(num: i32);
 
 struct Processor {
     callback: Callback,
@@ -16,8 +19,8 @@ impl Processor {
         self.callback = c;
     }
 
-    fn process_events(&self) {
-        (self.callback)();
+    fn process_events(&self, value: i32) {
+        (self.callback)(value);
     }
 }
 
