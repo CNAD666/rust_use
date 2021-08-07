@@ -1,3 +1,5 @@
+use std::thread;
+
 pub fn test() {
     let p = Processor {
         callback: |num| {
@@ -6,6 +8,10 @@ pub fn test() {
         },
     };
     p.process_events(12222); // hello world!
+
+    thread::spawn(|| {
+        println!("Here's a vector")
+    });
 }
 
 type Callback = fn(num: i32);
