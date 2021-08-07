@@ -8,10 +8,10 @@ mod data;
 mod demo;
 
 use api::web_api::{init_web};
-use demo::{test};
+use demo::{call_back};
 
 fn main() {
-    test::test();
+    call_back::test();
 
     //init web service
     init_web();
