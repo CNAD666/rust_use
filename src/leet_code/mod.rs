@@ -7,7 +7,7 @@ pub fn main() {
 
     match default {
         //闭包写法
-        1 => invoke(add_two::main),
+        1 => invoke(|| add_two::main()),
         _ => {}
     }
 }
