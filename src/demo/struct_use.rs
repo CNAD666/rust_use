@@ -1,4 +1,4 @@
-pub fn struct_use() {
+pub fn main() {
     let data = Sample { d: 11111, ..Sample::default() };
     println!("{:?}", data);
 }

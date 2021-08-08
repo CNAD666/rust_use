@@ -1,4 +1,4 @@
-pub fn call_back() {
+pub fn main() {
     let p = Processor {
         callback: |msg| {
             println!("{}", msg);
@@ -7,7 +7,7 @@ pub fn call_back() {
     p.process_events("111111111111111");
 }
 
-pub fn call_back_set() {
+pub fn main_set() {
     let mut p = Processor::default();
     p.set_callback(|msg| {
         println!("{}", msg);

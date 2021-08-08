@@ -2,16 +2,18 @@
 #[macro_use]
 extern crate rocket;
 
-
-mod api;
+mod web;
 mod data;
 mod demo;
-
-use api::web_api::{init_web};
+mod leet_code;
 
 fn main() {
-    demo::a_test::test();
+    //力扣
+    leet_code::main();
+
+    //测试demo
+    demo::main();
 
     //init web service
-    init_web();
+    web::main();
 }
