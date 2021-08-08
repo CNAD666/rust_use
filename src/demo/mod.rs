@@ -21,7 +21,7 @@ fn invoke(method: fn()) {
     println!();
     println!("测试demo: 打印开始");
     println!("------------------------------------------");
-    method.call();
+    method();
     println!("------------------------------------------");
     println!("测试demo: 打印结束");
     println!();
