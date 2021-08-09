@@ -1,13 +1,15 @@
-mod add_two;
+mod two_sum;
+mod two_add;
 
 
 pub fn main() {
-    let default = 1;
+    let default = 2;
 
 
     match default {
         //闭包写法
-        1 => invoke(|| add_two::main()),
+        1 => invoke(|| two_sum::main()),
+        2 => invoke(|| two_add::main()),
         _ => {}
     }
 }
