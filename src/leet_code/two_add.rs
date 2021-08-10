@@ -52,8 +52,8 @@ impl ListNode {
 fn produce_node(nums: Vec<i32>) -> Option<Box<ListNode>> {
     let mut node = Some(Box::new(ListNode::new(nums[0])));
     for index in 1..nums.len() {
-        let last_node = ListNode::get_last_mut(&mut node.unwrap());
-        last_node.unwrap().next = Some(Box::new(ListNode::new(nums[index])));
+        let last_node = ListNode::get_last_mut(&mut node.as_ref().unwrap());
+        last_node.next = Some(Box::new(ListNode::new(nums[index])));
     }
 
     node
