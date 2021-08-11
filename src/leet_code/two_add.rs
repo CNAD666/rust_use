@@ -50,20 +50,20 @@ impl ListNode {
 }
 
 fn produce_node(nums: Vec<i32>) -> Option<Box<ListNode>> {
-    let mut node = Some(Box::new(ListNode::new(nums[0])));
+    let mut node = Box::new(ListNode::new(nums[0]));
     for index in 1..nums.len() {
-        let last_node = ListNode::get_last_mut(&mut node.as_ref().unwrap());
+        let last_node = ListNode::last_node(&mut node);
         last_node.next = Some(Box::new(ListNode::new(nums[index])));
     }
 
-    node
+    Some(node)
 }
 
 impl ListNode {
     // 想修改节点，必须返回可变借用
-    pub fn get_last_mut(&mut self) -> &mut Self {
+    pub fn last_node(&mut self) -> &mut Self {
         return if let Some(ref mut boxNode) = self.next {
-            boxNode.get_last_mut()
+            boxNode.last_node()
         } else {
             self
         };
@@ -72,7 +72,7 @@ impl ListNode {
     // 追加节点
     pub fn append(&mut self, val: i32) {
         let _node = ListNode::new(val);
-        self.get_last_mut().next = Some(Box::new(_node));
+        self.last_node().next = Some(Box::new(_node));
     }
 }
 
