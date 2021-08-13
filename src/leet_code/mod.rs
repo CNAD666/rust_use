@@ -1,5 +1,6 @@
-mod two_sum;
-mod two_add;
+mod easy;
+mod hard;
+mod medium;
 
 
 pub fn main() {
@@ -7,9 +8,12 @@ pub fn main() {
 
 
     match default {
-        //闭包写法
-        1 => invoke(|| two_sum::main()),
-        2 => invoke(|| two_add::main()),
+        //Easy题
+        1 => invoke(|| easy::main()),
+        //Medium题
+        2 => invoke(|| medium::main()),
+        //Hard题
+        3 => invoke(|| hard::main()),
         _ => {}
     }
 }
