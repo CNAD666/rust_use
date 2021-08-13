@@ -13,11 +13,10 @@ pub fn main() {
     let result = Solution::add_two_numbers(one, two);
 
 
-    let mut node = &result;
-    while node != &None {
-        println!("{}", node.as_ref().unwrap().val);
-
-        node = &node.as_ref().unwrap().next;
+    let mut temp = &result;
+    while let Some(node) = temp {
+        println!("{}", node.val);
+        temp = &node.next
     }
 }
 
@@ -25,10 +24,33 @@ struct Solution;
 
 impl Solution {
     pub fn add_two_numbers(l1: Option<Box<ListNode>>, l2: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
-        let mut node = ListNode::new(1);
-        node.next = Some(Box::new(ListNode::new(1)));
-        node.next;
-        l1
+        let mut result = None;
+        let mut tail = &mut result;
+        let mut t = (l1, l2, 0, 0); // list1, list2, sum, carry
+
+        loop {
+            t = match t {
+                (None, None, _, 0) => break,
+                (None, None, _, carry) => (None, None, carry, 0),
+                (Some(node), None, _, carry) | (None, Some(node), _, carry) => {
+                    if node.val + carry >= 10 {
+                        (node.next, None, node.val + carry - 10, 1)
+                    } else {
+                        (node.next, None, node.val + carry, 0)
+                    }
+                }
+                (Some(node1), Some(node2), _, carry) => {
+                    if node1.val + node2.val + carry >= 10 {
+                        (node1.next, node2.next, node1.val + node2.val + carry - 10, 1)
+                    } else {
+                        (node1.next, node2.next, node1.val + node2.val + carry, 0)
+                    }
+                }
+            };
+            *tail = Some(Box::new(ListNode::new(t.2)));
+            tail = &mut tail.as_mut().unwrap().next;
+        }
+        result
     }
 }
 
@@ -50,20 +72,19 @@ impl ListNode {
 }
 
 fn produce_node(nums: Vec<i32>) -> Option<Box<ListNode>> {
-    let mut node = Box::new(ListNode::new(nums[0]));
+    let mut list_node = ListNode::new(nums[0]);
     for index in 1..nums.len() {
-        let last_node = ListNode::last_node(&mut node);
-        last_node.next = Some(Box::new(ListNode::new(nums[index])));
+        list_node.append(nums[index]);
     }
 
-    Some(node)
+    Some(Box::new(list_node))
 }
 
 impl ListNode {
     // 想修改节点，必须返回可变借用
     pub fn last_node(&mut self) -> &mut Self {
-        return if let Some(ref mut boxNode) = self.next {
-            boxNode.last_node()
+        return if let Some(ref mut node) = self.next {
+            node.last_node()
         } else {
             self
         };
