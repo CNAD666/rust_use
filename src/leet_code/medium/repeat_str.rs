@@ -1,4 +1,4 @@
-use std::collections::{HashMap, HashSet};
+use std::collections::HashMap;
 
 /// 给定一个字符串 s ，请你找出其中不含有重复字符的 最长子串 的长度。
 ///
@@ -23,18 +23,18 @@ impl Solution {
         let mut map = HashMap::new();
         let s_chars: Vec<char> = s.chars().collect();
         let mut pre = 0;
-        let mut num = 0;
+        let mut result = 0;
         for (index, value) in s_chars.iter().enumerate() {
-            if let Some(value) = map.get(&value) {
-                if pre <= *value {
-                    num = num.max(index - pre);
-                    pre = *value + 1;
+            if let Some(key) = map.get(&value) {
+                if pre <= *key {
+                    result = result.max(index - pre);
+                    pre = *key + 1;
                 }
             }
             map.insert(value, index);
         }
-        num = num.max(s.len() - pre);
-        num as i32
+        result = result.max(s.len() - pre);
+        result as i32
     }
 
     // pub fn length_of_longest_substring(s: String) -> i32 {
