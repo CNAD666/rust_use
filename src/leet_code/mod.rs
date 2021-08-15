@@ -4,7 +4,7 @@ mod medium;
 
 
 pub fn main() {
-    let default = 2;
+    let default = 1;
 
 
     match default {
