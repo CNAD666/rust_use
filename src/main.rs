@@ -1,7 +1,6 @@
 #![feature(proc_macro_hygiene, decl_macro)]
 #[macro_use]
 extern crate rocket;
-
 mod web;
 mod data;
 mod demo;
@@ -17,3 +16,4 @@ fn main() {
     //init web service
     web::main();
 }
+

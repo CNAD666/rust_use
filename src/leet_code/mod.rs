@@ -1,11 +1,11 @@
 mod easy;
 mod hard;
 mod medium;
-
+mod sword_offer;
+mod common;
 
 pub fn main() {
-    let default = 1;
-
+    let default = 4;
 
     match default {
         //Easy题
@@ -14,6 +14,8 @@ pub fn main() {
         2 => invoke(|| medium::main()),
         //Hard题
         3 => invoke(|| hard::main()),
+        //剑指offer专题
+        4 => invoke(|| sword_offer::main()),
         _ => {}
     }
 }

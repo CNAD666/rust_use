@@ -56,7 +56,7 @@ impl MinStack {
         if self.stack_min.is_empty() {
             self.stack_real.push(x);
             self.stack_min.push(x);
-        } else if self.stack_min[self.stack_min.len() - 1] > x {
+        } else if self.stack_min[self.stack_min.len() - 1] >= x {
             self.stack_real.push(x);
             self.stack_min.push(x);
         } else {
@@ -87,3 +87,4 @@ impl MinStack {
         -1
     }
 }
+
