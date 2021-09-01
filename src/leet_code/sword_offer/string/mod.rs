@@ -3,7 +3,7 @@ mod reverse_left_words;
 
 
 pub fn main() {
-    let default = 1;
+    let default = 2;
 
     match default {
         //替换空字符串1

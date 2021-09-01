@@ -3,7 +3,10 @@
 ///
 /// 输入: s = "abcdefg", k = 2
 /// 输出: "cdefgab"
-pub fn main() {}
+pub fn main() {
+    let result = Solution::reverse_left_words(String::from("absdfjsf"), 2);
+    println!("{}", result);
+}
 
 struct Solution;
 
