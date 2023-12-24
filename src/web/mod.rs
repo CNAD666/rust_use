@@ -1,7 +1,9 @@
+use rocket::{Build, Rocket};
+
 pub mod web_api;
 
 pub fn main() {
-    let default = 2;
+    let default = 1;
 
 
     match default {
@@ -11,7 +13,7 @@ pub fn main() {
     }
 }
 
-fn invoke(method: fn()) {
+fn invoke(method: fn() -> Rocket<Build>) {
     println!();
     println!("web: 打印开始");
     println!("*************************************************");

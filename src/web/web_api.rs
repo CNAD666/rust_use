@@ -1,7 +1,8 @@
 use crate::data::base_info::BaseResult;
 
-pub fn init_web() {
-    rocket::ignite().mount("/", routes![index]).launch();
+#[launch]
+pub fn init_web() -> _ {
+    rocket::build().mount("/", routes![index])
 }
 
 #[get("/")]
