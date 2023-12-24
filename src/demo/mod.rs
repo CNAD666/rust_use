@@ -1,9 +1,8 @@
 mod call_back;
-mod struct_use;
 mod option_use;
 
 pub fn main() {
-    let default = 4;
+    let default = 3;
 
     match default {
         //闭包写法
@@ -11,8 +10,7 @@ pub fn main() {
             invoke(call_back::main);
             invoke(call_back::main_set);
         }
-        2 => invoke(struct_use::main),
-        3 => invoke(option_use::main),
+        2 => invoke(option_use::main),
         _ => {}
     }
 }

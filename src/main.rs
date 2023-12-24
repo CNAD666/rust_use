@@ -1,18 +1,19 @@
-#[macro_use]
-extern crate rocket;
 mod web;
 mod data;
 mod demo;
 mod leet_code;
 
-fn main() {
-    //力扣
-    leet_code::main();
+#[tokio::main]
+async fn main() {
+    let default = 3;
 
-    //测试demo
-    demo::main();
-
-    //init web service
-    web::main();
+    match default {
+        //力扣
+        1 => leet_code::main(),
+        //测试demo
+        2 => demo::main(),
+        //init web service
+        3 => web::main().await,
+        _ => {}
+    }
 }
-

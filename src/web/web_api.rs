@@ -1,8 +1,9 @@
+use rocket::{get, routes};
 use crate::data::base_info::BaseResult;
 
-#[launch]
-pub fn init_web() -> _ {
-    rocket::build().mount("/", routes![index])
+pub async fn init_web() {
+    let rocket = rocket::build().mount("/", routes![index]);
+    rocket.launch().await.expect("TODO: panic message");
 }
 
 #[get("/")]
