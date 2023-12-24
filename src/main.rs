@@ -3,7 +3,7 @@ mod data;
 mod demo;
 mod leet_code;
 
-#[tokio::main]
+#[rocket::main]
 async fn main() {
     let default = 3;
 
